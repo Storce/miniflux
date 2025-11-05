@@ -17,11 +17,11 @@ services:
       - POSTGRES_PASSWORD=secret
       - POSTGRES_DB=miniflux
     volumes:
-      - joe_minifluxdb:/var/lib/postgresql/data
+      - joe_guga_minifluxdb:/var/lib/postgresql/data
     healthcheck:
       test: [CMD, pg_isready, -U, miniflux]
       interval: 10s
       start_period: 30s
     restart: always
 volumes:
-  joe_minifluxdb:
+  joe_guga_minifluxdb:
