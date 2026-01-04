@@ -14,10 +14,10 @@ services:
     image: postgres:17-alpine
     environment:
       - POSTGRES_USER=miniflux
-      - POSTGRES_PASSWORD=secret
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=miniflux
     volumes:
-      - joe_guga_minifluxdb:/var/lib/postgresql/data
+      - joe_guga_minifluxdb:./postgres
     healthcheck:
       test: [CMD, pg_isready, -U, miniflux]
       interval: 10s
