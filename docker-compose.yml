@@ -7,7 +7,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      - DATABASE_URL=postgres://miniflux:secret@db/miniflux?sslmode=disable
+      - DATABASE_URL=postgres://miniflux:${POSTGRES_PASSWORD}@db/miniflux?sslmode=disable
       - RUN_MIGRATIONS=1
     restart: always
   db:
@@ -17,11 +17,9 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=miniflux
     volumes:
-      - joe_guga_minifluxdb:./postgres
+      - ./postgres:/var/lib/postgresql/data
     healthcheck:
       test: [CMD, pg_isready, -U, miniflux]
       interval: 10s
       start_period: 30s
     restart: always
-volumes:
-  joe_guga_minifluxdb:
