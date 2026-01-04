@@ -10,7 +10,7 @@ services:
       - DATABASE_URL=postgres://miniflux:${POSTGRES_PASSWORD}@db/miniflux?sslmode=disable
       - RUN_MIGRATIONS=1
       # Disable when it is your second time running it
-      - CREATE_ADMIN=1
+      - CREATE_ADMIN=0
       - ADMIN_USERNAME=${ADMIN_USERNAME}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
     restart: always
